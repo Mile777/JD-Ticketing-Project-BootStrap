@@ -32,6 +32,7 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
+                                                                                                                        <!--object comes from DTO/ProjectController-->
                                     <form class="needs-validation" novalidate th:action="@{/project/create}" method="post" th:object="${project}">
                                         <div class="row">
                                             <div class="col">
@@ -133,13 +134,15 @@
                                             <tr th:each="project : ${projects}">
                                                 <td th:text="${project.projectCode}"></td>
                                                 <td th:text="${project.projectName}"></td>
+<!--                                            3.1 Format Dates https://www.baeldung.com/dates-in-thymeleaf-->
                                                 <td th:text="${#temporals.format(project.startDate,'MM.dd.yyyy') + ' - ' + #temporals.format(project.endDate,'MM.dd.yyyy')}"></td>
                                                 <td th:text="${project.assignedManager.firstName + ' ' + project.assignedManager.lastName}"></td>
                                                 <td th:text="${project.projectStatus}"></td>
                                                 <td>
                                                     <a class="btn btn-warning rounded-0">Update</a>
                                                     <a th:href="@{/project/delete/{id}(id=${project.getProjectCode()})}"><button type="button" class="btn btn-danger rounded-0">Delete</button></a>
-                                                    <a class="btn btn-info rounded-0">Complete</a>
+                                                    <!-- Step 5.                                                       ends.-->
+                                                    <a   th:href="@{/project/complete/{id}(id=${project.getProjectCode()})}"    class="btn btn-info rounded-0">Complete</a>
                                                 </td>
                                             </tr>
                                             </tbody>

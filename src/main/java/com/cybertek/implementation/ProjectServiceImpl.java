@@ -1,12 +1,13 @@
 package com.cybertek.implementation;
 
 import com.cybertek.dto.ProjectDTO;
+import com.cybertek.enums.Status;
 import com.cybertek.service.ProjectService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service // so we can make a Bean
 public class ProjectServiceImpl extends AbstractMapService<ProjectDTO,String> implements ProjectService {
     @Override
     public List<ProjectDTO> findAll() {
@@ -36,5 +37,14 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO,String> im
     @Override
     public ProjectDTO findById(String id) {
         return super.findById(id);
+    }
+
+    // Step 3. implementing method from Step 2 (Step 4 controller/ProjectController)
+    @Override
+    public void comlete(ProjectDTO project) {
+
+        project.setProjectStatus(Status.COMPLETE); // when we select COMPLETE button we want to change the project status
+        super.save(project.getProjectCode(),project);// saving the project status
+
     }
 }

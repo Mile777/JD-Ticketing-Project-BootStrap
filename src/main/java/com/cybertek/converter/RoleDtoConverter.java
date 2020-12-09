@@ -8,11 +8,27 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesBindin
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-@Component
-@ConfigurationPropertiesBinding
-public class RoleDtoConverter implements Converter<String,RoleDTO> {
+    /*
+    Interface Converter<S,T>
 
-    @Autowired
+    Type Parameters:
+    S - the source type
+    T - the target type
+
+    A converter converts a source object of type S to a target of type T.
+    Implementations of this interface are thread-safe and can be shared.
+     */
+
+
+@Component
+@ConfigurationPropertiesBinding // if our Class has this annotation, whenever our application is running and
+                                // comes to Role, it will make a conversion
+public class RoleDtoConverter implements Converter<String,RoleDTO> {
+//                                      converting String to Object.
+
+
+
+    @Autowired // injection
     RoleService roleService;
 
     @Override
@@ -27,4 +43,6 @@ public class RoleDtoConverter implements Converter<String,RoleDTO> {
         return object;
 
     }
+
+
 }

@@ -9,8 +9,10 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesBindin
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+// 'Converter<>' for the 'drop-down'.
+
 @Component
-@ConfigurationPropertiesBinding
+@ConfigurationPropertiesBinding     // converting String to Object
 public class UserDtoConverter implements Converter<String, UserDTO> {
 
     @Autowired
@@ -18,6 +20,7 @@ public class UserDtoConverter implements Converter<String, UserDTO> {
 
     @Override
     public UserDTO convert(String source) {
-        return userService.findById(source);
+
+        return userService.findById(source); // returning Object that belongs to the 'source'
     }
 }
