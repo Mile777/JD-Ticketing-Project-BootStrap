@@ -32,14 +32,14 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                                                                                                        <!--object comes from DTO/ProjectController-->
+                                            <!--BootStrap validation-->                                                 <!--object comes from DTO/ProjectController-->
                                     <form class="needs-validation" novalidate th:action="@{/project/create}" method="post" th:object="${project}">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label class="col-form-label">Project Name</label>
                                                     <input id="projectname" type="text" placeholder="project name" th:field="*{projectName}" class="form-control" required>
-                                                    <div class="invalid-feedback">Please enter project name.</div>
+                                                    <div class="invalid-feedback">Please enter project name</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,6 +86,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col">
                                                 <div class="float-right">
@@ -93,6 +94,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </form>
                                     <!-- ------------------------FORM END----------------------------- -->
 
