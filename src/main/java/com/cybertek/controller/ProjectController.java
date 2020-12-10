@@ -65,9 +65,9 @@ public class ProjectController {
     }
 
     // Step 1. (Step 2. project/update.html)
-    // UPDATE button
+    // 'UPDATE' button
     @GetMapping("/update/{projectcode")
-    public String updateProject(@PathVariable("projectcode") String projectcode, Model model){
+    public String editProject(@PathVariable("projectcode") String projectcode, Model model){
 
         // 'new ProjectDTO()' would give us an empty Object, which we don't need, cause the fields under Project Create would be empty,
         // instead when we select 'Update' button for a user from the User List, we want the fields under Project Create to be populated with that user info
@@ -79,6 +79,17 @@ public class ProjectController {
         model.addAttribute("managers",userService.findManagers()); // it will show us all Assigned Managers from the it's drop-down.
 
         return "/project/update";
+    }
+
+
+    // 'Save' button after updating the user from the User List under Project Create
+
+    @PostMapping("/update/{projectcode")                                        // it will take the new Object ('project') and will update
+    public String updateProject(@PathVariable("projectcode") String projectcode, ProjectDTO project, Model model){
+
+        projectService.update(project); // implementation/ProjectService/ ' public void update(ProjectDTO object) {..'
+
+        return "redirect:/project/create";
     }
 
 }
