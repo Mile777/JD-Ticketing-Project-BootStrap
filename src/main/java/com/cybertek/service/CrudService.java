@@ -29,15 +29,15 @@ public interface CrudService<T,ID> { // GENERICS
 
      */
 
-    T save(T object);
+    List<T> findAll();
 
     T findById(ID id);
-
-    List<T> findAll();
 
     void delete(T object);
 
     void deleteById(ID id);
+
+    T save(T object);
 
     void update(T object); // update the object > Implementation for this method is inside 'AbstractMapService'
 
