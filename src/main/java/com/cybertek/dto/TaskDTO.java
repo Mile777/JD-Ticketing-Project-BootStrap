@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class TaskDTO {
 
-    // Project
+// Project
     // Assigned Employees
     // Task Subject
     // Task Details
@@ -28,5 +28,13 @@ public class TaskDTO {
     private Status taskStatus; // we created project Status ENUMS under 'enums/Status'.
     private LocalDate assignedDate;
 
-
+    public TaskDTO(ProjectDTO project, UserDTO assignedEmployee, String taskSubject, String taskDetails, Status taskStatus, LocalDate assignedDate) {
+        this.project = project;
+        this.assignedEmployee = assignedEmployee;
+        this.taskSubject = taskSubject;
+        this.taskDetails = taskDetails;
+        this.taskStatus = taskStatus;
+        this.assignedDate = assignedDate;
+        this.id= UUID.randomUUID().getMostSignificantBits();  //Unique identifier
+    }
 }
