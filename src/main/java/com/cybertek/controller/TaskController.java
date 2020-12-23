@@ -80,7 +80,22 @@ public class TaskController {
         model.addAttribute("tasks", taskService.findAll());//
 
         return "task/update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateTask(@PathVariable("id") Long id, TaskDTO task, Model model){
+
+        taskService.update(task);
+
+        // since we are repeating the action we don't need retype 'model.Attribute for task, projects, employees, tasks...
+        // we can 'redirect'/navigate to the view: task/create,
+        return "redirect:/task/create";
 
     }
 
 }
+
+
+
+
+

@@ -63,8 +63,8 @@ public abstract class AbstractMapService<T,ID> {
 
 
     void update(ID id,T object){
-        map.entrySet().removeIf(entry -> entry.getValue().equals(object)); // deleting the Object..
-        map.put(id,object); // ..then adding a new one.
+        //map.entrySet().removeIf(entry -> entry.getValue().equals(object)); // deleting the Object..
+        map.put(id,object); // ..and adding a new Object ('.put' method we'll replace the object, so we don't need the above method)
                             // We need to update the Abstract method with 'super', 'UserServiceImpl' and 'RoleServiceImpl' > public void update(UserDTO object) {
 
 
