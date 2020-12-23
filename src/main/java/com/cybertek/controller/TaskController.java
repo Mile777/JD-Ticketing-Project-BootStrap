@@ -7,6 +7,7 @@ import com.cybertek.service.ProjectService;
 import com.cybertek.service.TaskService;
 import com.cybertek.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,6 +66,21 @@ public class TaskController {
         taskService.deleteById(id);
 
         return "redirect:/task/create";
+    }
+
+    @GetMapping("update/{id}")
+    public String editTask(@PathVariable("id") Long id, Model model){
+
+        model.addAttribute("task", taskService.findById(id)); // looking for a specific object found by ID
+
+        model.addAttribute("projects", projectService.findAll());// passing All objects/Projects inside drop-down
+
+        model.addAttribute("employees", userService.findEmloyees());// passing all objects/Employees inside drop-down
+
+        model.addAttribute("tasks", taskService.findAll());//
+
+        return "task/update";
+
     }
 
 }
